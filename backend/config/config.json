@@ -1,0 +1,7 @@
+{
+  "scraper": {
+    "url": "https://news.ycombinator.com/",
+    "output_format": "csv",
+    "max_items": 10
+  }
+}
