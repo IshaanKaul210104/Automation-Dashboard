@@ -1,12 +1,10 @@
+import React from "react";
 import Dashboard from "./components/Dashboard";
-import "./index.css";
 
-function App() {
+export default function App() {
   return (
-    <div className="min-h-screen bg-gray-100 flex justify-center items-start p-6">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
       <Dashboard />
     </div>
   );
 }
-
-export default App;
