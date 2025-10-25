@@ -1,4 +1,4 @@
-import requests, os, re, datetime, json
+import requests, os, re, datetime, json, csv
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 
@@ -70,5 +70,15 @@ def run(params=None, timestamp=None):
 
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(articles, f, indent=2, ensure_ascii=False)
+        
+    csv_path = os.path.join(output_dir, "articles.csv")
+    with open(csv_path, "w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=["title", "link"])
+        writer.writeheader()
+        writer.writerows(articles)
 
-    return {"count": len(articles), "output": output_dir}
+    return {
+            "count": len(articles),
+            "output": output_dir,
+            "csv_file": csv_path
+        }

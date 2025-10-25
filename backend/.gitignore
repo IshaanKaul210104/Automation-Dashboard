@@ -2,3 +2,8 @@ __pycache__/
 *.pyc
 .env
 venv/
+outputs/
+logs/
+webscraper/
+*.log 
+logs/
