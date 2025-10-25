@@ -8,7 +8,7 @@ export default function Dashboard() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Enable input for scraper */}
-        <RunButton scriptName="scraper" label="Run Web Scraper" hasInput={true} />
+        <RunButton scriptName="webscraper" label="Run Web Scraper" hasInput={true} />
         <RunButton scriptName="organizer" label="Organize Files" />
         <RunButton scriptName="github_fetcher" label="Fetch GitHub Stats" />
       </div>

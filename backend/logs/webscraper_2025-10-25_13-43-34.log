@@ -1,0 +1,5 @@
+webscraper ran successfully at 2025-10-25_13-43-34
+{
+  "count": 156,
+  "output": "outputs\\scraper\\20251025_134334\\articles.csv"
+}

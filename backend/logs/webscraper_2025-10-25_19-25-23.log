@@ -1,0 +1,5 @@
+webscraper ran successfully at 2025-10-25_19-25-23
+{
+  "count": 0,
+  "error": "HTTPSConnectionPool(host='medium.com', port=443): Max retries exceeded with url: /tag/programming (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000001FEC1073EF0>, 'Connection to medium.com timed out. (connect timeout=None)'))"
+}
