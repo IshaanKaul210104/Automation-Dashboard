@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 import json, os, datetime, importlib
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI(title="Automation Dashboard API")
 
@@ -19,6 +20,11 @@ if os.path.exists("config/config.json"):
         CONFIG = json.load(f)
 else:
     CONFIG = {}
+
+if not os.path.exists("outputs"):
+    os.makedirs("outputs")
+
+app.mount("/outputs", StaticFiles(directory="outputs"), name="outputs")
 
 @app.get("/")
 def read_root():
@@ -68,3 +74,18 @@ async def run_script(script_name: str, request: Request):
         with open(log_file, "w") as log:
             log.write(f"{script_name} failed at {timestamp}\n{str(e)}")
         return {"status": "failed", "log": log_file, "error": str(e)}
+    
+@app.get("/download-latest-csv")
+def download_latest_csv():
+    base_dir = "outputs/webscraper"
+    if not os.path.exists(base_dir):
+        return {"error": "No CSV found yet"}
+    
+    # Find the most recent timestamped folder
+    latest_folder = sorted(os.listdir(base_dir))[-1]
+    csv_path = os.path.join(base_dir, latest_folder, "articles.csv")
+    
+    if os.path.exists(csv_path):
+        return FileResponse(csv_path, media_type="text/csv", filename="articles.csv")
+    else:
+        return {"error": "CSV not found in latest output"}

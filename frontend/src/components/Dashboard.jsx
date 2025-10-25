@@ -1,4 +1,5 @@
 import React from "react";
+import WebScraperButton from "./WebScraperButton";
 import RunButton from "./RunButton";
 
 export default function Dashboard() {
@@ -8,7 +9,7 @@ export default function Dashboard() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Enable input for scraper */}
-        <RunButton scriptName="webscraper" label="Run Web Scraper" hasInput={true} />
+        <WebScraperButton />
         <RunButton scriptName="organizer" label="Organize Files" />
         <RunButton scriptName="github_fetcher" label="Fetch GitHub Stats" />
       </div>
